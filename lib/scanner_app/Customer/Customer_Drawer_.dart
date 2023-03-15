@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Customer_About_Us.dart';
 import 'Customer_Login.dart';
+import 'Customer_feedback_reg.dart';
 import 'Customer_orders.dart';
 
 class Customer_Drawer extends StatelessWidget {
@@ -78,6 +79,22 @@ class Customer_Drawer extends StatelessWidget {
             color: Colors.blueGrey.shade900,
           ),
           title: Text("My orders",
+              style: GoogleFonts.prompt(
+                fontSize: 15,
+              )),
+        ),
+        ListTile(
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Customer_feedback_reg()));
+          },
+          leading: Icon(
+            Icons.star,
+            color: Colors.blueGrey.shade900,
+          ),
+          title: Text("Feedback",
               style: GoogleFonts.prompt(
                 fontSize: 15,
               )),

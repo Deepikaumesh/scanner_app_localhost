@@ -1,14 +1,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:scan_local/scanner_app/Admin/Admin_Login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Customer/Customer_About_Us.dart';
-import 'Merchant_Login.dart';
+import 'admin_allCustomer_orders.dart';
 
 
 
-class Merchant_Drawer extends StatelessWidget {
+class Admin_Drawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -67,6 +68,26 @@ class Merchant_Drawer extends StatelessWidget {
                 fontSize: 15,
               )),
         ),
+
+        ListTile(
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Display_all_customer_orders()));
+          },
+          leading: Icon(
+            Icons.card_giftcard,
+            color: Colors.blueGrey.shade900,
+          ),
+          title: Text("Customer orders",
+              style: GoogleFonts.prompt(
+                fontSize: 15,
+              )),
+        ),
+
+
+
         ListTile(
           onTap: () {
             Customer_Signout(context);
@@ -91,7 +112,7 @@ class Merchant_Drawer extends StatelessWidget {
 
     Navigator.pushAndRemoveUntil(
       ctx,
-        MaterialPageRoute(builder: (ctx1) => Merchant_Login()),
+        MaterialPageRoute(builder: (ctx1) => Admin_Login()),
             (route) => false);
     print("loggged out");
   }

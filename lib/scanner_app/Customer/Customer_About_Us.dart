@@ -38,7 +38,7 @@ class _About_UsState extends State<About_Us> {
                       height: 30,
                     ),
                     Image.asset(
-                      "assets/images/qr_pro.png",
+                      "assets/images/drawer_qr.png",
                       height: 70,
                       width: 70,
                     ),

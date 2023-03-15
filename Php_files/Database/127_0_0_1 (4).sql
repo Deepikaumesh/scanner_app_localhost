@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 18, 2023 at 06:36 AM
+-- Generation Time: Mar 14, 2023 at 11:27 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 7.4.30
 
@@ -22,6 +22,45 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `scanner_project` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 USE `scanner_project`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin_registration`
+--
+
+CREATE TABLE `admin_registration` (
+  `id` int(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin_registration`
+--
+
+INSERT INTO `admin_registration` (`id`, `username`, `email`, `phone`, `password`) VALUES
+(67, 'admin', 'a@gmail.com', '9852369856', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customer_feedback`
+--
+
+CREATE TABLE `customer_feedback` (
+  `id` int(255) NOT NULL,
+  `feedback` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `customer_feedback`
+--
+
+INSERT INTO `customer_feedback` (`id`, `feedback`) VALUES
+(2, 'Good');
 
 -- --------------------------------------------------------
 
@@ -45,9 +84,8 @@ CREATE TABLE `customer_payment` (
 --
 
 INSERT INTO `customer_payment` (`id`, `name`, `bank`, `phone`, `ac_no`, `total_amt`, `order_id`, `uid`) VALUES
-(41, 'eded', 'dd', 'vht', 'rt', 'gg', '21', '58'),
-(42, 'Vbh', 'cgg', '235', '5586969696', '70.0', '22', '58'),
-(43, 'Ftt', 'fgg', '8956236969', '9696963696', '150.0', '23', '58');
+(44, 'Ghh', 'fgh', '86', '1472582589', '200.0', '24', '65'),
+(45, 'Hhj', 'ggh', '56', '9639639639', '400.0', '25', '65');
 
 -- --------------------------------------------------------
 
@@ -68,9 +106,7 @@ CREATE TABLE `customer_registration` (
 --
 
 INSERT INTO `customer_registration` (`id`, `username`, `email`, `phone`, `password`) VALUES
-(58, 'deepika', 'deepi@gmail.com', '9526843393', 'deepz'),
-(60, 'sanvi', 'ffgg@gmail.com', '8952369852', 'mol'),
-(61, 'cus', 'ff', '34', 'cus');
+(65, 'customer', 'c@gmail.com', '1234567890', 'cust');
 
 -- --------------------------------------------------------
 
@@ -90,8 +126,8 @@ CREATE TABLE `cust_cart_product` (
 --
 
 INSERT INTO `cust_cart_product` (`id`, `productid`, `product_qty`, `uid`) VALUES
-(325, '101', '1', '60'),
-(326, '103', '1', '60');
+(332, '101', '1', '65'),
+(334, '100', '3', '65');
 
 -- --------------------------------------------------------
 
@@ -107,6 +143,13 @@ CREATE TABLE `merchant_add_product` (
   `image` varchar(255) NOT NULL,
   `stock` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `merchant_add_product`
+--
+
+INSERT INTO `merchant_add_product` (`id`, `productid`, `productname`, `productprice`, `image`, `stock`) VALUES
+(228, '100', ' Bag ', '200', 'http://192.168.29.64/MySampleApp/Scanner_App/Merchant/image_uploaded/images.jpeg', '493');
 
 -- --------------------------------------------------------
 
@@ -127,9 +170,7 @@ CREATE TABLE `merchant_registration` (
 --
 
 INSERT INTO `merchant_registration` (`id`, `username`, `email`, `phone`, `password`) VALUES
-(48, 'abc', 'cc@gmail.com', '8956231478', 'cc'),
-(49, 'mer', '123', '2323', 'mer'),
-(50, 'merch', 'gihih@gmail.com', '9696963696', 'vv');
+(51, 'merchant', 'mer@gmail.com', '9858693656', 'mer');
 
 -- --------------------------------------------------------
 
@@ -150,13 +191,8 @@ CREATE TABLE `order_items_tb` (
 --
 
 INSERT INTO `order_items_tb` (`id`, `productid`, `product_qty`, `order_id`, `uid`) VALUES
-(9, '101', '1', '21', '58'),
-(10, '100', '1', '21', '58'),
-(11, '100', '1', '22', '58'),
-(12, '101', '1', '23', '58'),
-(13, '102', '1', '23', '58'),
-(14, '100', '2', '23', '58'),
-(15, '103', '1', '23', '58');
+(16, '100', '1', '24', '65'),
+(17, '100', '2', '25', '65');
 
 -- --------------------------------------------------------
 
@@ -176,13 +212,24 @@ CREATE TABLE `order_tb` (
 --
 
 INSERT INTO `order_tb` (`order_id`, `uid`, `order_date`, `total_amt`) VALUES
-(21, '58', '14/02/2023', 'gg'),
-(22, '58', '14/02/2023', '70.0'),
-(23, '58', '14/02/2023', '150.0');
+(24, '65', '18/02/2023', '200.0'),
+(25, '65', '14/03/2023', '400.0');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin_registration`
+--
+ALTER TABLE `admin_registration`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `customer_feedback`
+--
+ALTER TABLE `customer_feedback`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `customer_payment`
@@ -231,46 +278,58 @@ ALTER TABLE `order_tb`
 --
 
 --
+-- AUTO_INCREMENT for table `admin_registration`
+--
+ALTER TABLE `admin_registration`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+
+--
+-- AUTO_INCREMENT for table `customer_feedback`
+--
+ALTER TABLE `customer_feedback`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `customer_payment`
 --
 ALTER TABLE `customer_payment`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `customer_registration`
 --
 ALTER TABLE `customer_registration`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `cust_cart_product`
 --
 ALTER TABLE `cust_cart_product`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=327;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=335;
 
 --
 -- AUTO_INCREMENT for table `merchant_add_product`
 --
 ALTER TABLE `merchant_add_product`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=219;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=230;
 
 --
 -- AUTO_INCREMENT for table `merchant_registration`
 --
 ALTER TABLE `merchant_registration`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `order_items_tb`
 --
 ALTER TABLE `order_items_tb`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `order_tb`
 --
 ALTER TABLE `order_tb`
-  MODIFY `order_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `order_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
